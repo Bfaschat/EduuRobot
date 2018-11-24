@@ -6,6 +6,8 @@ import config
 import html
 from uuid import uuid4
 import duckpy
+import dotenv
+import os
 from .youtube import search_yt
 
 bot_username = config.me['username']
@@ -126,7 +128,7 @@ def inlines(msg):
                         thumb_url=result["Tumbnil"],
                         caption=f'{result["Deskripsi"]}'
                     ))
-             bot.answerInlineQuery(msg['id'], results=resp, cache_time=60, is_personal=True)
+            bot.answerInlineQuery(msg['id'], results=resp, cache_time=60, is_personal=True)
         elif msg['query'].startswith('invert'):
             query = msg['query'][7:]
             articles = [InlineQueryResultArticle(id='abcde', title=query[::-1],
